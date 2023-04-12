@@ -10,18 +10,7 @@ Business_Service="";
 declare -A input
 input["sandbox-frankfurt"]="eu-central-1"
 input["sandbox-london"]="eu-west-2"
-input["test-ireland"]="eu-west-1"
-input["test-london"]="eu-west-2"
-input["test-frankfurt"]="eu-central-1"
-input["prod-ireland"]="eu-west-1"
-input["prod-london"]="eu-west-2"
-input["prod-frankfurt"]="eu-central-1"
-input["nonprodss-ireland"]="eu-west-1"
-input["nonprodss-london"]="eu-west-2"
-input["nonprodss-frankfurt"]="eu-central-1"
-input["prodss-ireland"]="eu-west-1"
-input["prodss-london"]="eu-west-2"
-input["prodss-frankfurt"]="eu-central-1"
+
 
 describe_server_tag(){
   Project_name=$(aws ec2 describe-tags --filters "Name=resource-id,Values=$id" "Name=key,Values=$1" --output json --region $f2 --profile $f1 --query 'Tags[0].Value');
@@ -93,5 +82,5 @@ done
 echo "Qualys Reporting Ended for Profile ${f1} and Region ${f2}"
 done 
 echo "Qualys Reporting Finished"
-$upload=$(aws s3 cp ./QualysStatusReport.csv s3://mpesa-artifacts-cps-shared-sandbox-s3-blobstore/);
+$upload=$(aws s3 cp ./QualysStatusReport.csv s3://buket-name/);
 echo $upload;
